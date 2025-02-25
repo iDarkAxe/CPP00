@@ -1,0 +1,6 @@
+**/a.out
+**/lib/*
+**/*.o
+**/.obj/
+ex00/megaphone
+ex01/phonebook
