@@ -17,6 +17,8 @@ CC_DEBUG_CFLAGS = -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-
 #############################################################################################
 # Source directories
 P_SRC = ./
+P_OBJ = .obj/
+
 P_INC = ./
 
 #############################################################################################
@@ -26,10 +28,14 @@ P_INC = ./
 #############################################################################################
 # Headers
 INC = \
+	Contact.hpp \
+	PhoneBook.hpp
 
 # Source files
 SRC = \
-	main.cpp
+	main.cpp \
+	Contact.cpp \
+	PhoneBook.cpp
 
 LIBS = \
 
@@ -77,6 +83,7 @@ $(P_OBJ)%.o: $(P_SRC)%.cpp
 clean:
 	rm -rfd $(P_OBJ)
 	rm -rfd $(OBJS)
+	rm -rfd $(DEPS)
 
 clean-lib:
 	rm -rfd $(P_LIB)

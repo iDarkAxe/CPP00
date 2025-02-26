@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 11:51:23 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/26 15:26:20 by ppontet          ###   ########lyon.fr   */
+/*   Created: 2025/02/26 12:38:31 by ppontet           #+#    #+#             */
+/*   Updated: 2025/02/26 13:06:10 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include <iostream>
+#include "Contact.hpp"
 
-int main(void)
-{
-	PhoneBook phonebook;
+class PhoneBook{
+	private:
+		Contact _Contact[8];
+		size_t _index;
 
-	phonebook.addContact();
-	phonebook.addContact();
+	public:
+		PhoneBook();
+		~PhoneBook();
 
-	phonebook.searchContact();
-	return (0);
-}
+		Contact *getContact(size_t selected);
+
+		void addContact();
+		void searchContact();
+};
