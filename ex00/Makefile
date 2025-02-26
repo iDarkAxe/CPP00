@@ -1,15 +1,15 @@
 .PHONY : all clean fclean re bonus clean-lib clean-bin clean-obj debug debug-cc debug-print
 CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 DEPENDANCIES = -MMD -MP
 NO_DIR = --no-print-directory
 MAKE := $(MAKE) -j $(NO_DIR)
 NAME = megaphone
 
 # Debugging flags
-CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1
+CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1 -std=c++98
 CC_DEBUG = clang++
-CC_DEBUG_CFLAGS = -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-strings -Wconversion -fsanitize=address -fsanitize=leak
+CC_DEBUG_CFLAGS = -std=c++98 -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-strings -Wconversion -fsanitize=address -fsanitize=leak
 #############################################################################################
 #                                                                                           #
 #                                         DIRECTORIES                                       #
@@ -63,8 +63,8 @@ all:
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(DEPENDANCIES) $(DEBUG_STATE) -I $(P_INC) -o $(NAME) $(OBJS)
 
-# Custom rule to compilate all .c with there path
-$(P_OBJ)%.o: $(P_SRC)%.c
+# Custom rule to compilate all .cpp with there path
+$(P_OBJ)%.o: $(P_SRC)%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(DEPENDANCIES) $(DEBUG_STATE) -I $(P_INC) -c $< -o $@
 
@@ -76,6 +76,7 @@ $(P_OBJ)%.o: $(P_SRC)%.c
 # Rules for clean up
 clean:
 	rm -rfd $(P_OBJ)
+	rm -rfd $(OBJS)
 
 clean-lib:
 	rm -rfd $(P_LIB)

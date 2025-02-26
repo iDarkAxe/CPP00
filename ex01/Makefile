@@ -63,8 +63,8 @@ all:
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(DEPENDANCIES) $(DEBUG_STATE) -I $(P_INC) -o $(NAME) $(OBJS)
 
-# Custom rule to compilate all .c with there path
-$(P_OBJ)%.o: $(P_SRC)%.c
+# Custom rule to compilate all .cpp with there path
+$(P_OBJ)%.o: $(P_SRC)%.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(DEPENDANCIES) $(DEBUG_STATE) -I $(P_INC) -c $< -o $@
 
@@ -76,6 +76,7 @@ $(P_OBJ)%.o: $(P_SRC)%.c
 # Rules for clean up
 clean:
 	rm -rfd $(P_OBJ)
+	rm -rfd $(OBJS)
 
 clean-lib:
 	rm -rfd $(P_LIB)
