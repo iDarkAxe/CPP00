@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/26 15:24:30 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/02/27 13:05:29 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,58 @@ Contact *PhoneBook::getContact(size_t selected)
 	return (&this->_Contact[selected]);
 }
 
+// void PhoneBook::addContact()
+// {
+// 	Contact contact;
+// 	std::string str;
+// 	std::cout << "Creating a contact :" << std::endl;
+// 	std::cout << "Please enter a first name : ";
+// 	getline(std::cin, str);
+// 	contact.setFirstName(str);
+
+// 	std::cout << "Please enter a last name : ";
+// 	getline(std::cin, str);
+// 	contact.setLastName(str);
+
+// 	std::cout << "Please enter a nickname : ";
+// 	getline(std::cin, str);
+// 	contact.setNickName(str);
+
+// 	std::cout << "Please enter a phone number : ";
+// 	getline(std::cin, str);
+// 	contact.setPhoneNumber(str);
+
+// 	std::cout << "Please enter it's darkest secret : ";
+// 	getline(std::cin, str);
+// 	contact.setDarkestSecret(str);
+
+// 	if (this->_index + 1 > 7)
+// 		std::cout << "Replacing contact number " << this->_index % 8 << std::endl;
+// 	this->_Contact[this->_index % 8] = contact;
+// 	this->_index++;
+// }
+
 void PhoneBook::addContact()
 {
-	Contact contact;
-	std::string str;
+	std::string str1, str2, str3, str4, str5;
+	
 	std::cout << "Creating a contact :" << std::endl;
 	std::cout << "Please enter a first name : ";
-	getline(std::cin, str);
-	contact.setFirstName(str);
-
+	getline(std::cin, str1);
+	
 	std::cout << "Please enter a last name : ";
-	getline(std::cin, str);
-	contact.setLastName(str);
+	getline(std::cin, str2);
 
 	std::cout << "Please enter a nickname : ";
-	getline(std::cin, str);
-	contact.setNickName(str);
-
+	getline(std::cin, str3);
+	
 	std::cout << "Please enter a phone number : ";
-	getline(std::cin, str);
-	contact.setPhoneNumber(str);
-
+	getline(std::cin, str4);
+	
 	std::cout << "Please enter it's darkest secret : ";
-	getline(std::cin, str);
-	contact.setDarkestSecret(str);
-
+	getline(std::cin, str5);
+	
+	Contact contact(str1, str2, str3, str4, str5);
 	if (this->_index + 1 > 7)
 		std::cout << "Replacing contact number " << this->_index % 8 << std::endl;
 	this->_Contact[this->_index % 8] = contact;
@@ -82,11 +109,11 @@ void PhoneBook::searchContact()
 		index = std::atoi(str.c_str());
 		if (index < 0 || index > 7)
 		{
-			std::cout << "Index should be between 0-7" << std::endl;
+			std::cout << "Contact number should be between 0-7" << std::endl;
 		}
 		else if (static_cast<int>(this->_index) < index + 1)
 		{
-			std::cout << "Index " << index << " doesn't exist yet" << std::endl;
+			std::cout << "Contact number " << index << " doesn't exist yet" << std::endl;
 		}
 	} while (index < 0 || index > 7 || static_cast<int>(this->_index) < index + 1);
 	
