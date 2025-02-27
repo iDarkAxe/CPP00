@@ -1,15 +1,15 @@
 .PHONY : all clean fclean re bonus clean-lib clean-bin clean-obj debug debug-cc debug-print
 CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror  -std=c++98
 DEPENDANCIES = -MMD -MP
 NO_DIR = --no-print-directory
 MAKE := $(MAKE) -j $(NO_DIR)
 NAME = phonebook
 
 # Debugging flags
-CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1
+CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1  -std=c++98
 CC_DEBUG = clang++
-CC_DEBUG_CFLAGS = -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-strings -Wconversion -fsanitize=address -fsanitize=leak
+CC_DEBUG_CFLAGS = -std=c++98 -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-strings -Wconversion -fsanitize=address -fsanitize=leak
 #############################################################################################
 #                                                                                           #
 #                                         DIRECTORIES                                       #

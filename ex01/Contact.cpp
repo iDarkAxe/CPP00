@@ -44,6 +44,20 @@ std::string Contact::getDarkestSecret()
 	return (this->_DarkestSecret);
 }
 
+void Contact::printContact()
+{
+	std::cout << "First name : ";
+	std::cout << this->_FirstName << std::endl;
+	std::cout << "Last name : ";
+	std::cout << this->_LastName << std::endl;
+	std::cout << "Nickname : ";
+	std::cout << this->_NickName << std::endl;
+	std::cout << "Phone number : ";
+	std::cout << this->_PhoneNumber << std::endl;
+	std::cout << "Darkest secret : ";
+	std::cout << this->_DarkestSecret << std::endl;
+}
+
 // void Contact::setFirstName(std::string str)
 // {
 // 	this->_FirstName = str;

@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/27 13:05:29 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/02/27 13:49:45 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Contact *PhoneBook::getContact(size_t selected)
 	if (selected > 7)
 	{
 		std::cout << "Selected doesn't exist, number should be between 0-7" << std::endl;
-		return (nullptr);
+		return (NULL);
 	}
 	return (&this->_Contact[selected]);
 }
@@ -92,17 +92,38 @@ void PhoneBook::addContact()
 	this->_index++;
 }
 
+void PhoneBook::printTable()
+{
+	std::cout << "---------------------------------------------" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
+	for (size_t i = 0; i < 8; i++)
+	{
+		std::cout << "|" << "         " << i << "|";
+		std::cout.width(10);
+		std::cout << std::right << this->getContact(i)->getFirstName() << "|";
+		std::cout.width(10);
+		std::cout << std::right << this->getContact(i)->getLastName() << "|";
+		std::cout.width(10);
+		std::cout << std::right << this->getContact(i)->getNickName() << "|" << std::endl;
+	}
+	std::cout << "---------------------------------------------" << std::endl;
+}
+
 void PhoneBook::searchContact()
 {
 	std::string str;
 	int index;
-
-	
+	this->printTable();
 	do
 	{
+		if (static_cast<int>(this->_index) == 0)
+		{
+			std::cout << "No contact yet to select" << std::endl;
+			return ;
+		}
 		do 
 		{
-			std::cout << "Please enter a contact number [0-7]" << std::endl;
+			std::cout << "Please enter a contact number [0-7] : ";
 			getline(std::cin, str);
 		}
 		while(str == "" || !str.find_first_not_of("0123456789"));
@@ -117,14 +138,5 @@ void PhoneBook::searchContact()
 		}
 	} while (index < 0 || index > 7 || static_cast<int>(this->_index) < index + 1);
 	
-	std::cout << "First name : ";
-	std::cout << this->getContact(index)->getFirstName() << std::endl;
-	std::cout << "Last name : ";
-	std::cout << this->getContact(index)->getLastName() << std::endl;
-	std::cout << "Nickname : ";
-	std::cout << this->getContact(index)->getNickName() << std::endl;
-	std::cout << "Phone number : ";
-	std::cout << this->getContact(index)->getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret : ";
-	std::cout << this->getContact(index)->getDarkestSecret() << std::endl;
+	this->getContact(index)->printContact();
 }

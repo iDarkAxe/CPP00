@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:31 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/26 13:06:10 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/02/27 13:32:53 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class PhoneBook{
 		~PhoneBook();
 
 		Contact *getContact(size_t selected);
-
 		void addContact();
 		void searchContact();
+		void printTable();
 };
