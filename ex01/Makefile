@@ -7,7 +7,7 @@ MAKE := $(MAKE) -j $(NO_DIR)
 NAME = phonebook
 
 # Debugging flags
-CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1  -std=c++98
+CFLAGS_DEBUG = -Wall -Wextra -g3 -D DEBUG=1 -std=c++98
 CC_DEBUG = clang++
 CC_DEBUG_CFLAGS = -std=c++98 -g3 -D DEBUG=1 -Weverything -Wno-padded -pedantic -O2 -Wwrite-strings -Wconversion -fsanitize=address -fsanitize=leak
 #############################################################################################
@@ -29,13 +29,15 @@ P_INC = ./
 # Headers
 INC = \
 	Contact.hpp \
-	PhoneBook.hpp
+	PhoneBook.hpp \
+	ft_others.hpp
 
 # Source files
 SRC = \
 	main.cpp \
 	Contact.cpp \
-	PhoneBook.cpp
+	PhoneBook.cpp \
+	ft_others.cpp
 
 LIBS = \
 

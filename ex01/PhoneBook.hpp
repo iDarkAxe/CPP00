@@ -1,21 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 12:38:31 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/27 13:32:53 by ppontet          ###   ########lyon.fr   */
-/*                                                                            */
-/* ************************************************************************** */
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include <iostream>
 #include "Contact.hpp"
 
+#define MAX_CONTACT 10
+
 class PhoneBook{
 	private:
-		Contact _Contact[8];
+		Contact _Contact[MAX_CONTACT];
 		size_t _index;
 
 	public:
@@ -27,3 +20,5 @@ class PhoneBook{
 		void searchContact();
 		void printTable();
 };
+
+# endif

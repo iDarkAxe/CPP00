@@ -1,3 +1,6 @@
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 #include <iostream>
 
 class Contact{
@@ -25,3 +28,5 @@ class Contact{
 		// void setPhoneNumber(std::string str);
 		// void setDarkestSecret(std::string str);
 };
+
+#endif

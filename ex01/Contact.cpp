@@ -2,7 +2,6 @@
 
 Contact::Contact()
 {
-	;
 }
 
 Contact::Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
@@ -16,7 +15,6 @@ Contact::Contact(std::string firstName, std::string lastName, std::string nickNa
 
 Contact::~Contact()
 {
-	;
 }
 
 std::string Contact::getFirstName()

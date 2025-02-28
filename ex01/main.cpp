@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:23 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/27 13:37:38 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/02/28 12:22:05 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 		else if (str.compare("EXIT") == 0)
 			break;
 		else
-			std::cout << "Command not found" << std::endl;
+			std::cout << "\033[0;31m" << "ERROR : Command '"<< str << "' not found" << "\033[0m"<< std::endl;
 	}
 	while(1);
 	return (0);
