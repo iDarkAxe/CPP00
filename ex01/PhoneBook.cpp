@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/28 12:21:57 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/02/28 15:35:30 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ PhoneBook::~PhoneBook()
 {
 }
 
-Contact *PhoneBook::getContact(size_t selected)
-{
-	if (selected > MAX_CONTACT)
-	{
-		std::cerr << "\033[0;31m" << "Selected doesn't exist, number should be between 0-"<< MAX_CONTACT - 1 << "\033[0m" << std::endl;
-		return (NULL);
-	}
-	return (&this->_Contact[selected]);
-}
+// Contact *PhoneBook::getContact(size_t selected)
+// {
+// 	if (selected > MAX_CONTACT)
+// 	{
+// 		std::cerr << "\033[0;31m" << "Selected doesn't exist, number should be between 0-"<< MAX_CONTACT - 1 << "\033[0m" << std::endl;
+// 		return (NULL);
+// 	}
+// 	return (&this->_Contact[selected]);
+// }
 
 // void PhoneBook::addContact()
 // {
@@ -92,30 +92,40 @@ void PhoneBook::addContact()
 	this->_index++;
 }
 
+void PhoneBook::printContactTable(std::string str)
+{
+	std::cout << "|";
+	std::cout.width(MAX_CHAR);
+	if (str.length() > MAX_CHAR)
+		std::cout << std::right << str.substr(0, MAX_CHAR - 1).append(".");
+	else
+		std::cout << std::right << str;
+}
+
 void PhoneBook::printTable()
 {
-	std::cout << "---------------------------------------------" << std::endl;
+	std::string str;
+
+	for(size_t i = 0; i < (MAX_FIELD * MAX_CHAR + MAX_FIELD + 1); i++)
+		std::cout << "-";
+	std::cout << std::endl;
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	for (size_t i = 0; i < MAX_CONTACT; i++)
 	{
 		std::cout << "|";
-		for (size_t j = 0; j < 10 - count_digit(i); j++)
+		for (size_t j = 0; j < MAX_CHAR - count_digit(i); j++)
 			std::cout << " ";
 		std::cout << i;
 
-		std::cout << "|";
-		std::cout.width(10);
-		std::cout << std::right << this->getContact(i)->getFirstName().substr(0, 10);
-
-		std::cout << "|";
-		std::cout.width(10);
-		std::cout << std::right << this->getContact(i)->getLastName().substr(0, 10);
-
-		std::cout << "|";
-		std::cout.width(10);
-		std::cout << std::right << this->getContact(i)->getNickName().substr(0, 10) << "|" << std::endl;
+		printContactTable(this->_Contact[i].getFirstName());
+		printContactTable(this->_Contact[i].getLastName());
+		printContactTable(this->_Contact[i].getNickName());
+		
+		std::cout << "|" << std::endl;
 	}
-	std::cout << "---------------------------------------------" << std::endl;
+	for(size_t i = 0; i < (MAX_FIELD * MAX_CHAR + MAX_FIELD + 1); i++)
+		std::cout << "-";
+	std::cout << std::endl;
 }
 
 void PhoneBook::searchContact()
@@ -144,5 +154,5 @@ void PhoneBook::searchContact()
 				break;
 		}
 	} while (1);
-	this->getContact(static_cast<size_t>(index))->printContact();
+	this->_Contact[static_cast<size_t>(index)].printContact();
 }
