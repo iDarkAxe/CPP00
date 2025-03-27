@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/28 15:35:30 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/03/27 15:38:34 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,68 +24,27 @@ PhoneBook::~PhoneBook()
 {
 }
 
-// Contact *PhoneBook::getContact(size_t selected)
-// {
-// 	if (selected > MAX_CONTACT)
-// 	{
-// 		std::cerr << "\033[0;31m" << "Selected doesn't exist, number should be between 0-"<< MAX_CONTACT - 1 << "\033[0m" << std::endl;
-// 		return (NULL);
-// 	}
-// 	return (&this->_Contact[selected]);
-// }
-
-// void PhoneBook::addContact()
-// {
-// 	Contact contact;
-// 	std::string str;
-// 	std::cout << "Creating a contact :" << std::endl;
-// 	std::cout << "Please enter a first name : ";
-// 	getline(std::cin, str);
-// 	contact.setFirstName(str);
-
-// 	std::cout << "Please enter a last name : ";
-// 	getline(std::cin, str);
-// 	contact.setLastName(str);
-
-// 	std::cout << "Please enter a nickname : ";
-// 	getline(std::cin, str);
-// 	contact.setNickName(str);
-
-// 	std::cout << "Please enter a phone number : ";
-// 	getline(std::cin, str);
-// 	contact.setPhoneNumber(str);
-
-// 	std::cout << "Please enter it's darkest secret : ";
-// 	getline(std::cin, str);
-// 	contact.setDarkestSecret(str);
-
-// 	if (this->_index + 1 > 7)
-// 		std::cout << "Replacing contact number " << this->_index % MAX_CONTACT << std::endl;
-// 	this->_Contact[this->_index % MAX_CONTACT] = contact;
-// 	this->_index++;
-// }
-
 void PhoneBook::addContact()
 {
-	std::string str1, str2, str3, str4, str5;
+	std::string str[5];
 	
 	std::cout << "Creating a contact :" << std::endl;
 	std::cout << "Please enter a first name : ";
-	getline(std::cin, str1);
+	getline(std::cin, str[0]);
 	
 	std::cout << "Please enter a last name : ";
-	getline(std::cin, str2);
+	getline(std::cin, str[1]);
 
 	std::cout << "Please enter a nickname : ";
-	getline(std::cin, str3);
+	getline(std::cin, str[2]);
 	
 	std::cout << "Please enter a phone number : ";
-	getline(std::cin, str4);
+	getline(std::cin, str[3]);
 	
 	std::cout << "Please enter it's darkest secret : ";
-	getline(std::cin, str5);
+	getline(std::cin, str[4]);
 	
-	Contact contact(str1, str2, str3, str4, str5);
+	Contact contact(str[0], str[1], str[2], str[3], str[4]);
 	if (this->_index + 1 > MAX_CONTACT)
 		std::cout << "Replacing contact number " << this->_index % MAX_CONTACT << std::endl;
 	this->_Contact[this->_index % MAX_CONTACT] = contact;
