@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/03/27 15:38:34 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/04/01 12:23:08 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,38 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void PhoneBook::addContact()
+int PhoneBook::addContact()
 {
+	size_t		index;
 	std::string str[5];
-	
-	std::cout << "Creating a contact :" << std::endl;
-	std::cout << "Please enter a first name : ";
-	getline(std::cin, str[0]);
-	
-	std::cout << "Please enter a last name : ";
-	getline(std::cin, str[1]);
+	std::string	element[5] = {"first name", "last name", "nickname", "phone number", "darkest secret"};
 
-	std::cout << "Please enter a nickname : ";
-	getline(std::cin, str[2]);
-	
-	std::cout << "Please enter a phone number : ";
-	getline(std::cin, str[3]);
-	
-	std::cout << "Please enter it's darkest secret : ";
-	getline(std::cin, str[4]);
+	std::cout << "Creating a contact :" << std::endl;
+	index = 0;
+	while (index < 5)
+	{
+		std::cout << "Please enter a " << element[index] << ": ";
+		getline(std::cin, str[index]);
+		if (std::cin.good())
+		{
+			std::cerr << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
+			return (1);
+		}
+		if (str[index].empty())
+			std::cerr << "\033[0;31m" << "ERROR : input shouldn't be empty" << "\033[0m" << std::endl;
+		else
+			index++;
+	}
 	
 	Contact contact(str[0], str[1], str[2], str[3], str[4]);
 	if (this->_index + 1 > MAX_CONTACT)
 		std::cout << "Replacing contact number " << this->_index % MAX_CONTACT << std::endl;
 	this->_Contact[this->_index % MAX_CONTACT] = contact;
 	this->_index++;
+	return (0);
 }
 
-void PhoneBook::printContactTable(std::string str)
+void printContactTable(std::string str)
 {
 	std::cout << "|";
 	std::cout.width(MAX_CHAR);
@@ -87,7 +91,7 @@ void PhoneBook::printTable()
 	std::cout << std::endl;
 }
 
-void PhoneBook::searchContact()
+int PhoneBook::searchContact()
 {
 	std::string str;
 	int index;
@@ -96,12 +100,17 @@ void PhoneBook::searchContact()
 	if (static_cast<int>(this->_index) == 0)
 	{
 		std::cout << "No contact yet to select" << std::endl;
-		return ;
+		return (0);
 	}
 	do 
 	{
 		std::cout << "Please enter a contact number [0-" << MAX_CONTACT - 1 << "] : ";
 		getline(std::cin, str);
+		if (std::cin.good())
+		{
+			std::cerr << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
+			return (1);
+		}
 		std::cin.clear();
 		if (safe_atoi(str.c_str(), &index))
 		{
@@ -114,4 +123,5 @@ void PhoneBook::searchContact()
 		}
 	} while (1);
 	this->_Contact[static_cast<size_t>(index)].printContact();
+	return (0);
 }

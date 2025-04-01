@@ -2,6 +2,11 @@
 
 Contact::Contact()
 {
+	this->_FirstName = "";
+	this->_LastName = "";
+	this->_NickName = "";
+	this->_PhoneNumber = "";
+	this->_DarkestSecret = "";
 }
 
 Contact::Contact(std::string firstName, std::string lastName, std::string nickName, std::string phoneNumber, std::string darkestSecret)
@@ -55,28 +60,3 @@ void Contact::printContact()
 	std::cout << "Darkest secret : ";
 	std::cout << this->_DarkestSecret << std::endl;
 }
-
-// void Contact::setFirstName(std::string str)
-// {
-// 	this->_FirstName = str;
-// }
-
-// void Contact::setLastName(std::string str)
-// {
-// 	this->_LastName = str;
-// }
-
-// void Contact::setNickName(std::string str)
-// {
-// 	this->_NickName = str;
-// }
-
-// void Contact::setPhoneNumber(std::string str)
-// {
-// 	this->_PhoneNumber = str;
-// }
-
-// void Contact::setDarkestSecret(std::string str)
-// {
-// 	this->_DarkestSecret = str;
-// }
