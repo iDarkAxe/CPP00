@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:51:23 by ppontet           #+#    #+#             */
-/*   Updated: 2025/04/01 12:23:24 by ppontet          ###   ########lyon.fr   */
+ /*   Updated: 2025/04/01 12:23:24 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(void)
 		std::cout << "Commands : ADD, SEARCH, EXIT" << std::endl;
 		std::cout << "Choice : ";
 		getline(std::cin, str);
-		if (std::cin.good())
+		if (!std::cin.good())
 		{
-			std::cerr << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
+			std::cout << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
 			return (1);
 		}
 		if (str.compare("ADD") == 0)
@@ -36,8 +36,8 @@ int main(void)
 			phonebook.searchContact();
 		else if (str.compare("EXIT") == 0)
 			break;
-		else
-			std::cout << "\033[0;31m" << "ERROR : Command '" << str << "' not found" << "\033[0m" << std::endl;
+		// else
+			// std::cout << "\033[0;31m" << "ERROR : Command '" << str << "' not found" << "\033[0m" << std::endl;
 	}
 	while(1);
 	return (0);

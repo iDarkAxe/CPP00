@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 11:18:16 by ppontet           #+#    #+#             */
-/*   Updated: 2025/02/28 12:20:26 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/05/18 10:48:34 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ size_t count_digit(size_t n)
 
 void print_error(std::string str)
 {
-	std::cerr << "\033[0;31m" << "ERROR : " << str << "\033[0m " << std::endl;
+	std::cout << "\033[0;31m" << "ERROR : " << str << "\033[0m " << std::endl;
 }

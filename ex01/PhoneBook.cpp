@@ -6,7 +6,7 @@
 /*   By: ppontet <ppontet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:38:33 by ppontet           #+#    #+#             */
-/*   Updated: 2025/04/01 12:23:08 by ppontet          ###   ########lyon.fr   */
+/*   Updated: 2025/05/18 10:50:44 by ppontet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int PhoneBook::addContact()
 	{
 		std::cout << "Please enter a " << element[index] << ": ";
 		getline(std::cin, str[index]);
-		if (std::cin.good())
+		if (!std::cin.good())
 		{
-			std::cerr << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
+			std::cout << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
 			return (1);
 		}
 		if (str[index].empty())
-			std::cerr << "\033[0;31m" << "ERROR : input shouldn't be empty" << "\033[0m" << std::endl;
+			std::cout << "\033[0;31m" << "ERROR : input shouldn't be empty" << "\033[0m" << std::endl;
 		else
 			index++;
 	}
@@ -106,18 +106,18 @@ int PhoneBook::searchContact()
 	{
 		std::cout << "Please enter a contact number [0-" << MAX_CONTACT - 1 << "] : ";
 		getline(std::cin, str);
-		if (std::cin.good())
+		if (!std::cin.good())
 		{
-			std::cerr << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
+			std::cout << "\033[0;31m" << "\nERROR : you closed stdin with Ctrl+D" << "\033[0m" << std::endl;
 			return (1);
 		}
 		std::cin.clear();
 		if (safe_atoi(str.c_str(), &index))
 		{
 			if (index < 0 || index > MAX_CONTACT - 1)
-				std::cerr << "\033[0;31m" << "ERROR : Contact number should be between 0-" << MAX_CONTACT - 1 << "\033[0m" << std::endl;
+				std::cout << "\033[0;31m" << "ERROR : Contact number should be between 0-" << MAX_CONTACT - 1 << "\033[0m" << std::endl;
 			else if (static_cast<int>(this->_index) < index + 1)
-				std::cerr << "\033[0;31m" << "ERROR : Contact number " << index << " doesn't exist yet" << "\033[0m" << std::endl;
+				std::cout << "\033[0;31m" << "ERROR : Contact number " << index << " doesn't exist yet" << "\033[0m" << std::endl;
 			else
 				break;
 		}
