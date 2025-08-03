@@ -12,6 +12,21 @@
 
 #include "PhoneBook.hpp"
 
+/*
+To make std::cin reusable after a close from Ctrl+D, you can :
+#include <fstream>
+
+getline(std::cin, str);
+if (!std::cin.good())
+{
+	freopen("/dev/tty", "r", stdin);
+	std::cin.ignore();
+	std::cin.clear();
+	continue;
+}
+It will works as no error ever existed (ignoring an error shouldn't be a great idea)
+*/
+
 int main(void)
 {
 	PhoneBook phonebook;
